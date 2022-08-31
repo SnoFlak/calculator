@@ -1,22 +1,45 @@
 var values: Array<number> = [];
 var opperations: Array<string> = [];
 var buildingNumber: string = '';
+var equationString: string = '';
+
+function updateInputValue(num: string | number) {
+    const curVal = document.getElementById('current-value');
+    if (curVal !== null){
+        if (typeof num === 'number'){
+            curVal.innerHTML = String(num);
+        } else {
+            curVal.innerHTML = num;
+        }
+    }
+}
+
+function updateEquationValue(equation: string) {
+    const equationElement = document.getElementById("current-equation");
+    if (equationElement !== null){
+        equationElement.innerHTML = equation;
+    }
+}
 
 function buildNumber(val: number) {
     buildingNumber += val.toString();
+    updateInputValue(buildingNumber);
 }
 
 function addOpperand(val: string) {
     opperations.push(val)
     values.push(parseInt(buildingNumber));
+    equationString += (buildingNumber + " " + val + " ")
     buildingNumber = '';
+
+    updateEquationValue(equationString);
 }
 
 function calculateValues() {
-    console.log(values, "Values")
     values.push(parseInt(buildingNumber));
+    equationString += (buildingNumber)
     buildingNumber = '';
-
+    updateEquationValue(equationString);
 
     let calculationValue: number = values[0];
     if (values.length > 1) {
@@ -59,5 +82,5 @@ function calculateValues() {
     values = [];
     opperations = [];
 
-    console.log(calculationValue);
+    updateInputValue(calculationValue);
 }
