@@ -61,6 +61,7 @@ button {
 }
 
 #current-equation {
+    font-size: 1.125rem;
     padding-top: 10px;
     padding-right: 10px;
     text-align: right;
@@ -68,6 +69,7 @@ button {
 
 
 #current-value {
+    font-size: 4rem;
     padding-right: 10px;
     padding-bottom: 10px;
     text-align: right;
